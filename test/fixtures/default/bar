@@ -1,0 +1,3 @@
+test_this() {
+  echo "is valid"
+}
