@@ -1,4 +1,4 @@
-# bats-file
+# bats-utils
 
 [![GitHub license](https://img.shields.io/github/license/trinitronx/bats-utils.svg?maxAge=2592000)](https://raw.githubusercontent.com/trinitronx/bats-utils/master/LICENSE)
 [![GitHub release](https://img.shields.io/github/release/ztombol/bats-file.svg)](https://github.com/trinitronx/bats-utils/releases/latest)
