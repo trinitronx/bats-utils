@@ -1,4 +1,6 @@
 language: bash
+sudo: required
+
 before_install:
   - git clone --depth 1 https://github.com/sstephenson/bats
   - cd bats && ./install.sh "${HOME}/.local" && cd .. && rm -rf bats
