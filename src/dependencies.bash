@@ -24,6 +24,17 @@
 #   STDERR - details, on failure
 
 install_test_dependency() {
+  ## Debugging
+  ## errtrace = E
+  ## errexit = e
+  ## functrace = T
+  ## xtrace = x
+  # export PS4='(${BASH_SOURCE}:${LINENO}): - [${SHLVL},${BASH_SUBSHELL},$?] $ '
+  # set -x
+  # set +e
+  # set +T
+  # set +E
+
   local dep=$1
   local bats_lib_file="$(dirname "${BASH_SOURCE[0]}")/${dep}.bash"
   if [ -f "$bats_lib_file" ]; then
@@ -33,5 +44,10 @@ install_test_dependency() {
   fi
   
   which $dep  &>/dev/null || install_$dep
+  ## END DEBUGGING
+  # set -e
+  # set -E
+  # set -T
+  # set +x
 }
 
