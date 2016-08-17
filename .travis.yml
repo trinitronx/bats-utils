@@ -1,15 +1,11 @@
 language: bash
 sudo: required
-# Test on Xenial (16.04 LTS)
-dist: xenial
-# Only Ubuntu LTS distro supported by Travis-CI with packages for jq, shellcheck
-# Source: https://pkgs.org/search/shellcheck
+services:
+  - docker
 
 before_install:
-  - git clone --depth 1 https://github.com/sstephenson/bats
-  - cd bats && ./install.sh "${HOME}/.local" && cd .. && rm -rf bats
-  - git clone --depth 1 https://github.com/ztombol/bats-support ../bats-support
-before_script:
-  - export PATH="${HOME}/.local/bin:${PATH}"
+  - docker build -f build/Dockerfile.test -t "trinitronx/bats-utils:test-$TRAVIS_JOB_NUMBER" .
 script:
-  - sudo -E ${HOME}/.local/bin/bats test
+  - docker run --rm "trinitronx/bats-utils:test-$TRAVIS_JOB_NUMBER" 'sudo -E ${HOME}/.local/bin/bats test'
+after_script:
+  - docker rmi "trinitronx/bats-utils:test-$TRAVIS_JOB_NUMBER"

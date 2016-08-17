@@ -1,0 +1,10 @@
+FROM ubuntu:xenial
+
+RUN apt-get update -qq && apt-get -qy install git
+RUN git clone --depth 1 https://github.com/sstephenson/bats
+RUN cd bats && ./install.sh "${HOME}/.local" && cd .. && rm -rf bats
+RUN git clone --depth 1 https://github.com/ztombol/bats-support ../bats-support
+
+RUN echo export PATH="${HOME}/.local/bin:${PATH}" >> /etc/bash.bashrc
+
+ADD . /src/pub
