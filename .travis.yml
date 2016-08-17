@@ -1,5 +1,9 @@
 language: bash
 sudo: required
+# Test on Xenial (16.04 LTS)
+dist: xenial
+# Only Ubuntu LTS distro supported by Travis-CI with packages for jq, shellcheck
+# Source: https://pkgs.org/search/shellcheck
 
 before_install:
   - git clone --depth 1 https://github.com/sstephenson/bats
