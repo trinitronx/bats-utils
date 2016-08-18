@@ -6,6 +6,6 @@ services:
 before_install:
   - docker build -f build/Dockerfile.test -t "trinitronx/bats-utils:test-$TRAVIS_JOB_NUMBER" .
 script:
-  - docker run --rm "trinitronx/bats-utils:test-$TRAVIS_JOB_NUMBER" 'sudo -E ${HOME}/.local/bin/bats test'
+  - docker run --rm "trinitronx/bats-utils:test-$TRAVIS_JOB_NUMBER" 'bats test'
 after_script:
   - docker rmi "trinitronx/bats-utils:test-$TRAVIS_JOB_NUMBER"
